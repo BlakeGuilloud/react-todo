@@ -1,0 +1,22 @@
+.todo__list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.todo__list-create {
+  padding-bottom: 20px;
+  color: $color-info;
+}
+
+.todo__item {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.todo__item-actions {
+  color: $color-success;
+}

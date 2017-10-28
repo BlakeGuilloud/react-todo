@@ -19,25 +19,21 @@ export default class TodoList extends Component {
     // .then(this.setState);
   }
 
-  handleDelete = (id) => {
-    console.log('delete this item', id);
-  }
-
   render() {
     const renderTodo = (item, idx) =>
       <TodoItem
-        handleDelete={this.handleDelete}
         item={item}
         key={idx}
       />;
 
     return (
-      <div>
-        This is da list
-        <br />
-        <Link to="/new">Create New</Link>
-
-        {this.state.todos.map(renderTodo)}
+      <div className="todo__list">
+        <div className="todo__list-create">
+          <Link to="/new">Create New</Link>
+        </div>
+        <div className="todo__list-items">
+          {this.state.todos.map(renderTodo)}
+        </div>
       </div>
     );
   }

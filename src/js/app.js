@@ -6,6 +6,7 @@ import {
   Link,
 } from 'react-router-dom';
 
+import Header from './Header';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import '../css/main.scss';
@@ -14,15 +15,11 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <h3>This is my todo list</h3>
-
-          <hr/>
+        <div className="app">
+          <Header />
 
           <Route exact path="/" component={TodoList} />
           <Route path="/:id" component={TodoForm}/>
-          {/* <Route path="/about" component={About}/> */}
-          {/* <Route path="/topics" component={Topics}/> */}
         </div>
       </Router>
     );

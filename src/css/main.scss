@@ -1,5 +1,6 @@
-@import 'colors';
+@import 'variables';
+@import 'scaffolding';
 
-body {
-  color: $red;
-}
+@import 'header';
+@import 'todo';
+@import 'form';
