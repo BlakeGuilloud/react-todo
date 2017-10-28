@@ -14,9 +14,10 @@ export default class TodoList extends Component {
   }
 
   componentDidMount() {
-    this.setState(fetchTodos());
-    // fetchTodos()
-    // .then(this.setState);
+    fetchTodos()
+      .then(todos =>
+        this.setState({ todos })
+      );
   }
 
   render() {

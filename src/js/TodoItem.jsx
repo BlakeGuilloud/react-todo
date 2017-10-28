@@ -7,7 +7,7 @@ const TodoItem = (props) => {
   return (
     <div className="todo__item">
       {item.todo}
-      <Link className="todo__item-actions" to={`/${item.id}`}>Edit</Link>
+      <Link className="todo__item-actions" to={`/${item.todoId}`}>Edit</Link>
     </div>
   );
 };

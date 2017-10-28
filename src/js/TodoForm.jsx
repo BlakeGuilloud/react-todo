@@ -10,14 +10,15 @@ export default class TodoForm extends Component {
     return {
       todo: '',
       completed: false,
-      id: null,
+      todoId: null,
     };
   }
 
-  componentDidMount() {
-    const todo = fetchTodo(this.props.match.params.id);
-
-    if (todo) this.setState(todo);
+  componentWillMount() {
+    if (this.props.match.params.id !== 'new') {
+      fetchTodo(this.props.match.params.id)
+        .then(data => this.setState(data));
+    }
   }
 
   handleChange = (e) => {
@@ -29,7 +30,7 @@ export default class TodoForm extends Component {
   handleSubmit = () => {
     const todo = {...this.state};
 
-    if (todo.id) {
+    if (todo.todoId) {
       updateTodo(todo);
     } else {
       createTodo(todo);
@@ -39,7 +40,7 @@ export default class TodoForm extends Component {
   }
 
   handleDelete = () => {
-    deleteTodo(this.state.id);
+    deleteTodo(this.state.todoId);
 
     this.props.history.push('/');
   }
@@ -57,10 +58,10 @@ export default class TodoForm extends Component {
             placeholder="What would you like todo?"
           />
           <div className="todo__form-actions">
-            <button className={this.state.id ? 'button-success' : 'button-info'} onClick={this.handleSubmit}>
-              {this.state.id ? 'Update' : 'Create'}
+            <button className={this.state.todoId ? 'button-success' : 'button-info'} onClick={this.handleSubmit}>
+              {this.state.todoId ? 'Update' : 'Create'}
             </button>
-            {this.state.id &&
+            {this.state.todoId &&
               <button className="button-danger" onClick={this.handleDelete}>
                 Delete
               </button>

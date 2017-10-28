@@ -1,33 +1,37 @@
-const todos = [
-  {
-    id: 1,
-    todo: 'Clean the house',
-    completed: false,
-  },
-  {
-    id: 2,
-    todo: 'Feed the dogs',
-    completed: true,
-  }
-];
+import axios from 'axios';
+
+const baseUrl = 'https://qy7cigwg35.execute-api.us-east-1.amazonaws.com/dev/todos';
 
 export function fetchTodos() {
-  return { todos };
+  return axios.get(baseUrl)
+    .then(response => response.data)
+    .catch(handleError);
 }
 
 export function fetchTodo(id) {
-  return todos.find(item => item.id === Number(id));
+  return axios.get(`${baseUrl}/${id}`)
+    .then(response => response.data)
+    .catch(handleError);
 }
 
 export function updateTodo(todo) {
-  console.log('update the todod : ', todo);
-  // return axios.patch(`/todos/${todo.id}`);
+  return axios.patch(`${baseUrl}/${todo.todoId}`, todo)
+    .then(response => response.data)
+    .catch(handleError);
 }
 
 export function createTodo(todo) {
-  console.log('create the todo: ', todo);
+  return axios.post(`${baseUrl}`, JSON.stringify(todo))
+    .then(response => response.data)
+    .catch(handleError);
 }
 
 export function deleteTodo(id) {
-  console.log('delete this todo : ', id);
+  return axios.delete(`${baseUrl}/${id}`)
+    .catch(handleError);
+}
+
+function handleError(err) {
+  // eslint-disable-next-line
+  console.error(err);
 }
