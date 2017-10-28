@@ -27,3 +27,7 @@ export function updateTodo(todo) {
 export function createTodo(todo) {
   console.log('create the todo: ', todo);
 }
+
+export function deleteTodo(id) {
+  console.log('delete this todo : ', id);
+}
