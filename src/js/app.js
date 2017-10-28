@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
+
+import TodoList from './TodoList';
+import TodoForm from './TodoForm';
 import '../css/main.scss';
 
 export default class App extends Component {
-  dog = () => {
-    console.log('hey doggy dog');
-  }
-
   render() {
     return (
-      <div>
-        This is base config for a react application..
-        <button onClick={this.dog}>Click for dog</button>
-      </div>
+      <Router>
+        <div>
+          <h3>This is my todo list</h3>
+
+          <hr/>
+
+          <Route exact path="/" component={TodoList} />
+          <Route path="/:id" component={TodoForm}/>
+          {/* <Route path="/about" component={About}/> */}
+          {/* <Route path="/topics" component={Topics}/> */}
+        </div>
+      </Router>
     );
   }
 }
