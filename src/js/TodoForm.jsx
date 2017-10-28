@@ -38,21 +38,24 @@ export default class TodoForm extends Component {
 
   render() {
     return (
-      <div>
-        <Link to="/">Back</Link>
-
-        This is the form
-
-        <input
-          type="text"
-          name="todo"
-          value={this.state.todo}
-          onChange={this.handleChange}
-        />
-
-        <button onClick={this.handleSubmit}>
-          {this.state.id ? 'Update' : 'Create'}
-        </button>
+      <div className="todo__form">
+        <Link className="todo__form-back" to="/">Back</Link>
+        <div className="todo__form-content">
+          <input
+            type="text"
+            name="todo"
+            value={this.state.todo}
+            onChange={this.handleChange}
+          />
+          <div className="todo__form-actions">
+            <button className={this.state.id ? 'button-success' : 'button-info'} onClick={this.handleSubmit}>
+              {this.state.id ? 'Update' : 'Create'}
+            </button>
+            <button className="button-danger" onClick={this.handleSubmit}>
+              Delete
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
